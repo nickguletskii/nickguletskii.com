@@ -1,0 +1,25 @@
+---
+export interface Props {
+  name: string;
+  size?: "sm" | "lg";
+}
+
+const { name, size = "sm" } = Astro.props;
+---
+
+<li
+  class={`inline-block`}
+>
+  <a
+    href={`/tags/${name.toLowerCase()}`}
+    class={`${size === "sm" ? "text-sm" : "text-lg"} group px-2`}
+  >
+    <span>#&nbsp;{name.toLowerCase()}</span>
+  </a>
+</li>
+
+<style>
+  a {
+    @apply relative underline decoration-dashed hover:-top-0.5 hover:text-skin-accent;
+  }
+</style>
